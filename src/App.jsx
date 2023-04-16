@@ -2,34 +2,35 @@ import { useState } from "react";
 import "./App.css";
 
 function App() {
+  const [dobDay, setdobDay] = useState("");
+
+  const [dobMonth, setdobMonth] = useState("");
+
+  const [dobYear, setdobYear] = useState("");
+
+  let dob = new Date(`${dobYear}-${dobMonth}- ${dobDay}`);
+
   const [days, setDays] = useState("--");
 
   const [months, setMonths] = useState("--");
 
   const [years, setYears] = useState("--");
 
-  const [dobDays, setDobDays] = useState("");
-
-  const [dobMonths, setDobMonths] = useState("");
-
-  const [dobYears, setDobYears] = useState("");
-
   const [plural, setPlural] = useState({ day: "s", month: "s", year: "s" });
 
-  let dob = new Date(`${dobYears}-${dobMonths}- ${dobDays}`);
-
-  const handleDobDays = (event) => {
-    setDobDays(event.target.value);
+  const handledobDay = (event) => {
+    setdobDay(String(event.target.value));
   };
 
-  const handleDobMonths = (event) => {
-    setDobMonths(event.target.value);
+  const handledobMonth = (event) => {
+    setdobMonth(String(event.target.value));
   };
 
-  const handleDobYears = (event) => {
-    setDobYears(event.target.value);
+  const handledobYear = (event) => {
+    setdobYear(String(event.target.value));
   };
 
+  //Handle Plural
   const handlePlural = (days, months, years) => {
     let newObject = { ...plural };
 
@@ -42,8 +43,9 @@ function App() {
     setPlural(newObject);
   };
 
-  function calculateAge(event) {
-    event.preventDefault();
+  //Calculate Age
+  const calculateAge = () => {
+    // event.preventDefault();
 
     const dobDateYear = dob.getYear();
 
@@ -58,18 +60,16 @@ function App() {
     const nowDateMonth = nowDate.getMonth();
 
     const nowDateDay = nowDate.getDate();
-
+    //Age in years
     let yearsAge = nowDateYear - dobDateYear;
-
+    // Age in months
     let monthsAge = 0;
 
-    // Age in months
     if (nowDateMonth >= dobDateMonth) monthsAge = nowDateMonth - dobDateMonth;
     else {
       yearsAge--;
       monthsAge = 12 + nowDateMonth - dobDateMonth;
     }
-
     // Age in days
     let daysAge = 0;
     if (nowDateDay >= dobDateDay) daysAge = nowDateDay - dobDateDay;
@@ -90,36 +90,64 @@ function App() {
     setMonths(monthsAge);
     setYears(yearsAge);
     handlePlural(daysAge, monthsAge, yearsAge);
+  };
+
+  //Handle Validation !Must recieve string data!
+  function validateDate(Day, Month, Year) {
+    const currentDate = new Date();
+    const inputDate = new Date(Year, Month - 1, Day);
+
+    // Check if the input date is not in the future
+    if (inputDate > currentDate) {
+      return false;
+    }
+
+    // Check if the input day existed in the input month and year
+    if (inputDate.getDate() !== parseInt(Day)) {
+      return false;
+    }
+
+    return true;
   }
+
+  //Handle Submit
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (validateDate(dobDay, dobMonth, dobYear) === true) {
+      calculateAge();
+    } else {
+      console.log("error");
+    }
+  };
 
   return (
     <div className="App">
       <form action="">
         <input
           type="number"
-          name=""
+          name="days"
           placeholder="days"
-          value={dobDays}
-          onChange={handleDobDays}
+          value={dobDay}
+          onChange={handledobDay}
         />
         <input
           type="number"
-          name=""
+          name="months"
           placeholder="months"
-          value={dobMonths}
-          onChange={handleDobMonths}
+          value={dobMonth}
+          onChange={handledobMonth}
         />
         <input
           type="number"
-          name=""
+          name="years"
           placeholder="years"
-          value={dobYears}
-          onChange={handleDobYears}
+          value={dobYear}
+          onChange={handledobYear}
         />
-        <input type="submit" value="" onClick={calculateAge} />
+        <input type="submit" value="" onClick={handleSubmit} />
       </form>
       <div>
-        {years}year{plural.year}, {months}month{plural.month} {days}day
+        {years} Year{plural.year}, {months} Month{plural.month} {days} Day
         {plural.day}
       </div>
     </div>
