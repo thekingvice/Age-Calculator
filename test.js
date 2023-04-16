@@ -1,16 +1,50 @@
-const dd = 15;
-const mm = 4;
-const yy = 2001;
-const month_days = [];
-var today = new Date();
+// const dob = new Date(`2001-04-${15 + 1}`);
 
-const ageDays = 0;
-const ageMonths = 0;
-const ageYears = 0;
+// function calculateAge() {
+//   const dobDateYear = dob.getYear();
+//   const dobDateMonth = dob.getMonth();
+//   const dobDateDay = dob.getDate();
 
-function ageCalculator(day, month, year) {
-  const dob = new Date(year, month - 1, day);
-  const now = new Date();
-}
+//   // Current Date - Year, Month, Day
+//   const nowDate = new Date();
+//   const nowDateYear = nowDate.getYear();
+//   const nowDateMonth = nowDate.getMonth();
+//   const nowDateDay = nowDate.getDate();
 
-console.log(ageCalculator(dd, mm, yy));
+//   // Age in years
+//   let yearsAge = nowDateYear - dobDateYear;
+//   let monthsAge = 0;
+
+//   // Age in months
+//   if (nowDateMonth >= dobDateMonth)
+//     // Get months when current month is greater
+//     monthsAge = nowDateMonth - dobDateMonth;
+//   else {
+//     yearsAge--;
+//     monthsAge = 12 + nowDateMonth - dobDateMonth;
+//   }
+
+//   // Age in days
+//   let daysAge = 0;
+//   if (nowDateDay >= dobDateDay)
+//     // Get days when the current date is greater
+//     daysAge = nowDateDay - dobDateDay;
+//   else {
+//     monthsAge--;
+//     daysAge = 31 + nowDateDay - dobDateDay;
+
+//     if (monthsAge < 0) {
+//       monthsAge = 11;
+//       yearsAge--;
+//     }
+//   }
+//   console.log(yearsAge);
+//   console.log(monthsAge);
+//   console.log(daysAge);
+// }
+
+// calculateAge();
+
+const day = 1;
+const month = 1;
+const year = 2001;
