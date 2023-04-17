@@ -1,0 +1,81 @@
+.App {
+  margin: 1rem;
+  background: white;
+  padding: 1.5rem;
+  border-radius: 1rem 1rem 5rem 1rem;
+}
+
+.App__form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.App__input-outer-wrapper {
+  display: flex;
+  gap: 1rem;
+}
+
+.App__input-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 4rem;
+}
+
+.App__input {
+  padding: 0.2rem;
+  border-radius: 0.2rem;
+  border: 1px solid lightgray;
+}
+
+.App__input:focus {
+  outline: none;
+  border: 1px solid #864cff;
+}
+
+.App__label {
+  color: lightgray;
+  font-size: 0.5rem;
+}
+
+.App__submit {
+  background: #864cff;
+  border-radius: 100%;
+  padding: 0.25rem;
+  cursor: pointer;
+}
+
+.App__submit:hover {
+  background: black;
+  border-radius: 100%;
+}
+
+.App__submit-arrow {
+  width: 1.5rem;
+}
+
+.App__submit-wrapper {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 0;
+}
+
+.App__divider {
+  height: 0.5px;
+  background: lightgray;
+  width: 15rem;
+}
+
+.App__output-wrapper {
+  display: flex;
+  flex-direction: column;
+  font-size: 2.5rem;
+  font-style: italic;
+  font-weight: 800;
+}
+
+.App__output-num {
+  color: #864cff;
+  padding-right: 0.5rem;
+}

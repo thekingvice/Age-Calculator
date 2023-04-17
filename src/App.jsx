@@ -122,33 +122,76 @@ function App() {
 
   return (
     <div className="App">
-      <form action="">
-        <input
-          type="number"
-          name="days"
-          placeholder="days"
-          value={dobDay}
-          onChange={handledobDay}
-        />
-        <input
-          type="number"
-          name="months"
-          placeholder="months"
-          value={dobMonth}
-          onChange={handledobMonth}
-        />
-        <input
-          type="number"
-          name="years"
-          placeholder="years"
-          value={dobYear}
-          onChange={handledobYear}
-        />
-        <input type="submit" value="" onClick={handleSubmit} />
+      <form className="App__form" action="">
+        <div className="App__input-outer-wrapper">
+          <div className="App__input-wrapper">
+            <label className="App__label" htmlFor="days">
+              DAY
+            </label>
+            <input
+              className="App__input"
+              maxLength="2"
+              type="text"
+              name="days"
+              placeholder="DD"
+              value={dobDay}
+              onChange={handledobDay}
+            />
+          </div>
+          <div className="App__input-wrapper">
+            <label className="App__label" htmlFor="months">
+              MONTH
+            </label>
+            <input
+              className="App__input"
+              maxLength="2"
+              type="text"
+              name="months"
+              placeholder="MM"
+              value={dobMonth}
+              onChange={handledobMonth}
+            />
+          </div>
+          <div className="App__input-wrapper">
+            <label className="App__label" htmlFor="years">
+              YEAR
+            </label>
+            <input
+              className="App__input"
+              maxLength="4"
+              type="text"
+              name="years"
+              placeholder="YY"
+              value={dobYear}
+              onChange={handledobYear}
+            />
+          </div>
+        </div>
+
+        <div className="App__submit-wrapper">
+          <div className="App__divider"></div>
+          <button className="App__submit" type="submit" onClick={handleSubmit}>
+            <img
+              className="App__submit-arrow"
+              src="/icon-arrow.svg"
+              alt="submit"
+            />
+          </button>
+        </div>
       </form>
-      <div>
-        {years} Year{plural.year}, {months} Month{plural.month} {days} Day
-        {plural.day}
+      <div className="App__output-wrapper">
+        <span>
+          <span className="App__output-num">{years}</span>
+          year{plural.year}
+        </span>
+        <span>
+          <span className="App__output-num">{months}</span>
+          month{plural.month}
+        </span>
+        <span>
+          <span className="App__output-num">{days}</span>
+          day{plural.day}
+        </span>
       </div>
     </div>
   );
