@@ -18,6 +18,40 @@ function App() {
 
   const [plural, setPlural] = useState({ day: "s", month: "s", year: "s" });
 
+  const [inputBorder, setInputBorder] = useState("lightgray");
+
+  const [labelColor, setLabelColor] = useState("lightgray");
+
+  const [visible, setVisible] = useState("");
+
+  const handleBorderColor = () => {
+    setInputBorder("#f14c52");
+  };
+
+  const handleVisibility = () => {
+    setVisible("visible");
+  };
+
+  const handleLabelColor = () => {
+    setLabelColor("#f14c52");
+  };
+
+  const handleResetBorderColor = () => {
+    setInputBorder("lightgray");
+  };
+
+  const handleResetVisibility = () => {
+    setVisible("");
+  };
+
+  const handleResetLabelColor = () => {
+    setLabelColor("lightgray");
+  };
+
+  const handleFocusBorder = () => {
+    setInputBorder("#864cff");
+  };
+
   const handledobDay = (event) => {
     setdobDay(String(event.target.value));
   };
@@ -82,10 +116,6 @@ function App() {
         yearsAge--;
       }
     }
-    console.log(yearsAge);
-    console.log(monthsAge);
-    console.log(daysAge);
-
     setDays(daysAge);
     setMonths(monthsAge);
     setYears(yearsAge);
@@ -119,8 +149,14 @@ function App() {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (validateDate(dobDay, dobMonth, dobYear) === true) {
+      handleResetBorderColor();
+      handleResetVisibility();
+      handleResetLabelColor();
       calculateAge();
     } else {
+      handleBorderColor();
+      handleVisibility();
+      handleLabelColor();
       console.log("error");
     }
   };
@@ -130,7 +166,11 @@ function App() {
       <form className="App__form" action="">
         <div className="App__input-outer-wrapper">
           <div className="App__input-wrapper">
-            <label className="App__label" htmlFor="days">
+            <label
+              className="App__label"
+              htmlFor="days"
+              style={{ color: labelColor }}
+            >
               DAY
             </label>
             <input
@@ -141,10 +181,16 @@ function App() {
               placeholder="DD"
               value={dobDay}
               onChange={handledobDay}
+              style={{ border: `1px solid ${inputBorder}` }}
+              onFocus={handleFocusBorder}
             />
           </div>
           <div className="App__input-wrapper">
-            <label className="App__label" htmlFor="months">
+            <label
+              className="App__label"
+              htmlFor="months"
+              style={{ color: labelColor }}
+            >
               MONTH
             </label>
             <input
@@ -155,10 +201,16 @@ function App() {
               placeholder="MM"
               value={dobMonth}
               onChange={handledobMonth}
+              style={{ border: `1px solid ${inputBorder}` }}
+              onFocus={handleFocusBorder}
             />
           </div>
           <div className="App__input-wrapper">
-            <label className="App__label" htmlFor="years">
+            <label
+              className="App__label"
+              htmlFor="years"
+              style={{ color: labelColor }}
+            >
               YEAR
             </label>
             <input
@@ -169,10 +221,14 @@ function App() {
               placeholder="YY"
               value={dobYear}
               onChange={handledobYear}
+              style={{ border: `1px solid ${inputBorder}` }}
+              onFocus={handleFocusBorder}
             />
           </div>
         </div>
-        <span className="App__error">Must be a valid date</span>
+        <span className="App__error" style={{ visibility: visible }}>
+          Must be a valid date
+        </span>
         <div className="App__submit-wrapper">
           <div className="App__divider"></div>
           <button className="App__submit" type="submit" onClick={handleSubmit}>
