@@ -1,5 +1,5 @@
 .App {
-  margin: 1rem;
+  margin: 0.2rem;
   background: white;
   padding: 1.5rem;
   border-radius: 1rem 1rem 5rem 1rem;
@@ -37,6 +37,15 @@
 .App__label {
   color: lightgray;
   font-size: 0.5rem;
+}
+
+.App__error {
+  width: 14rem;
+  font-size: 0.5rem;
+  font-style: italic;
+  color: #f14c52;
+  padding-top: 0.25rem;
+  visibility: hidden;
 }
 
 .App__submit {
@@ -78,4 +87,35 @@
 .App__output-num {
   color: #864cff;
   padding-right: 0.5rem;
+}
+
+@media (max-width: 510px) {
+  .App {
+    width: 12rem;
+  }
+
+  .App__input-outer-wrapper {
+    gap: 0.5rem;
+  }
+
+  .App__input-wrapper {
+    width: 3rem;
+  }
+
+  .App__output-wrapper {
+    font-size: 1.5rem;
+    position: relative;
+    padding: 0.5rem 0 1rem 0;
+  }
+
+  .App__divider {
+    width: 9rem;
+    position: relative;
+    left: 1rem;
+  }
+
+  .App__submit {
+    position: relative;
+    right: 4.5rem;
+  }
 }

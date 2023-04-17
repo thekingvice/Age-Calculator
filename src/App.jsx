@@ -97,6 +97,11 @@ function App() {
     const currentDate = new Date();
     const inputDate = new Date(Year, Month - 1, Day);
 
+    //Check if input month is greater that 12
+    if (Month > 12) {
+      return false;
+    }
+
     // Check if the input date is not in the future
     if (inputDate > currentDate) {
       return false;
@@ -167,7 +172,7 @@ function App() {
             />
           </div>
         </div>
-
+        <span className="App__error">Must be a valid date</span>
         <div className="App__submit-wrapper">
           <div className="App__divider"></div>
           <button className="App__submit" type="submit" onClick={handleSubmit}>
